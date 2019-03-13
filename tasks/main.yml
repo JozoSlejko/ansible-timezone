@@ -23,3 +23,12 @@
     - configuration
     - timezone
     - timezone-configure-etc-timezone
+
+- name: configure /etc/systemd/timesyncd.conf
+  template:
+    src: etc/timesyncd.j2
+    dest: /etc/systemd/timesyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart systemd-timesyncd.service

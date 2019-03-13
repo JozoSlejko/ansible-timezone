@@ -2,3 +2,8 @@
 ---
 - name: update tzdata
   command: dpkg-reconfigure --frontend noninteractive tzdata
+
+- name: restart systemd-timesyncd.service
+  service:
+    name: systemd-timesyncd.service
+    state: restarted
